@@ -20,6 +20,13 @@ export class SemverComparator {
 	}
 
 	/**
+	 * Wrap this comparator as a delegate to be passed to arrays or other sortable constructs.
+	 */
+	public get sortable(): (a: string, b: string) => number {
+		return (a: string, b: string) => this.compare(a, b);
+	}
+
+	/**
 	 * Returns true if v1 < v2 - defaults to defaultValue on error.
 	 */
 	public lessThan(v1: string, v2: string, defaultValue: boolean = false): boolean {

@@ -18,4 +18,19 @@ describe('General Usage', () => {
 		expect(version.greaterThan(null)).toBe(false);
 		expect(version.greaterThan(null, true)).toBe(true);
 	});
+
+	it('can run the readme example', () => {
+
+		expect(Semver.greaterThan('1.2.3', '1')).toBe(true);
+		expect(Semver.greaterThan('1.2.3', null)).toBe(false);
+		expect(Semver.equals('1.2.3', null, true)).toBe(true);
+
+		const version = new SemverContext(() => '1.2.3');
+		expect(version.lessThan('2')).toBe(true);
+		expect(version.equals('1.2.3')).toBe(true);
+		expect(version.greaterThanOrEqual('1.2.3')).toBe(true);
+		expect(version.greaterThan(null)).toBe(false);
+		expect(version.greaterThan(null, true)).toBe(true);
+		expect(version.greaterThan('2', true)).toBe(false);
+	});
 });

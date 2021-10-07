@@ -7,6 +7,12 @@ describe('SemverComparator', () => {
 		expect(comparator.compare('test1', 'test2')).toBe(comparator.compareFailureResult);
 	});
 
+	it('can be used as a sorting function', () => {
+		const input = ['5', '4.9.3', '7.0.1', null, '1.0', '1', ''];
+		const output = ['1.0', '1', '4.9.3', '5', '7.0.1', null, ''];
+		expect(input.sort(Semver.sortable)).toEqual(output);
+	});
+
 	describe('lessThan', () => {
 
 		it('uses the default value when one is given', () => {

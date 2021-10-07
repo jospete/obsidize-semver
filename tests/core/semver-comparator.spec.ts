@@ -24,16 +24,16 @@ describe('SemverComparator', () => {
 	describe('lessThanOrEqual', () => {
 
 		it('uses the default value when one is given', () => {
-			expect(Semver.lessThanOrEqual(null, null)).toBe(false);
-			expect(Semver.lessThanOrEqual(null, null, true)).toBe(true);
+			expect(Semver.lessThanOrEqualTo(null, null)).toBe(false);
+			expect(Semver.lessThanOrEqualTo(null, null, true)).toBe(true);
 		});
 	});
 
 	describe('greaterThanOrEqual', () => {
 
 		it('uses the default value when one is given', () => {
-			expect(Semver.greaterThanOrEqual(null, null)).toBe(false);
-			expect(Semver.greaterThanOrEqual(null, null, true)).toBe(true);
+			expect(Semver.greaterThanOrEqualTo(null, null)).toBe(false);
+			expect(Semver.greaterThanOrEqualTo(null, null, true)).toBe(true);
 		});
 	});
 

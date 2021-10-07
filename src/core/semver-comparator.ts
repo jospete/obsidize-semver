@@ -36,7 +36,7 @@ export class SemverComparator {
 	/**
 	 * Returns true if v1 <= v2 - defaults to defaultValue on error.
 	 */
-	public lessThanOrEqual(v1: string, v2: string, defaultValue: boolean = false): boolean {
+	public lessThanOrEqualTo(v1: string, v2: string, defaultValue: boolean = false): boolean {
 		return this.test(v1, v2, SemverComparisonType.LESS_THAN_OR_EQUAL, defaultValue);
 	}
 
@@ -50,7 +50,7 @@ export class SemverComparator {
 	/**
 	 * Returns true if v1 >= v2 - defaults to defaultValue on error.
 	 */
-	public greaterThanOrEqual(v1: string, v2: string, defaultValue: boolean = false): boolean {
+	public greaterThanOrEqualTo(v1: string, v2: string, defaultValue: boolean = false): boolean {
 		return this.test(v1, v2, SemverComparisonType.GREATER_THAN_OR_EQUAL, defaultValue);
 	}
 

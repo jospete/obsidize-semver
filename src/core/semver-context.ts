@@ -34,16 +34,16 @@ export class SemverContext {
 		return this.comparator.lessThan(this.version, other, defaultValue);
 	}
 
-	lessThanOrEqual(other: string, defaultValue?: boolean): boolean {
-		return this.comparator.lessThanOrEqual(this.version, other, defaultValue);
+	lessThanOrEqualTo(other: string, defaultValue?: boolean): boolean {
+		return this.comparator.lessThanOrEqualTo(this.version, other, defaultValue);
 	}
 
 	equals(other: string, defaultValue?: boolean): boolean {
 		return this.comparator.equals(this.version, other, defaultValue);
 	}
 
-	greaterThanOrEqual(other: string, defaultValue?: boolean): boolean {
-		return this.comparator.greaterThanOrEqual(this.version, other, defaultValue);
+	greaterThanOrEqualTo(other: string, defaultValue?: boolean): boolean {
+		return this.comparator.greaterThanOrEqualTo(this.version, other, defaultValue);
 	}
 
 	greaterThan(other: string, defaultValue?: boolean): boolean {

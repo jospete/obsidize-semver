@@ -42,7 +42,7 @@ console.log(Semver.equals('1.2.3', null, true)); // true (because 3rd parameter 
 const version = new SemverContext(() => '1.2.3'); // or load this dynamically from somewhere else
 console.log(version.lessThan('2')); // true
 console.log(version.equals('1.2.3')); // true
-console.log(version.greaterThanOrEqual('1.2.3')); // true
+console.log(version.greaterThanOrEqualTo('1.2.3')); // true
 console.log(version.greaterThan(null)); // false
 console.log(version.greaterThan(null, true)); // true
 console.log(version.greaterThan('2', true)); // false

@@ -13,7 +13,7 @@ Semver.greaterThan('1.2.3', ''); // false
 ```
 
 **NOTE:** While the above example is poking fun at the [compare-versions](https://www.npmjs.com/package/compare-versions)
-module, it actually uses compare-versions as the primary backend for core comparison logic.
+module, this module actually uses compare-versions as the primary backend for core comparison logic.
 
 ## Installation
 

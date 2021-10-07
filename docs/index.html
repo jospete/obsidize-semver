@@ -1,0 +1,175 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>obsidize-semver</title>
+	<meta name="description" content="Documentation for obsidize-semver">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">obsidize-semver</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>obsidize-semver</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#obsidizesemver" id="obsidizesemver" style="color: inherit; text-decoration: none;">
+					<h1>@obsidize/semver</h1>
+				</a>
+				<p>Middleware to compare semver strings and not cause error explosions on malformed input.</p>
+				<p>This was created with the belief that a version comparator should not halt execution during other complex processes.</p>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #0000FF">*</span><span style="color: #000000"> </span><span style="color: #AF00DB">as</span><span style="color: #000000"> </span><span style="color: #001080">compareVersions</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;compare-versions&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> {</span><span style="color: #001080">Semver</span><span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@obsidize/semver&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #795E26">compareVersions</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;1.2.3&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000">); </span><span style="color: #008000">// ERROR ERROR ERROR ONE OF THE ARGS ISN&#039;T A VERSION AHHHHH!!!</span>
+<span style="color: #001080">Semver</span><span style="color: #000000">.</span><span style="color: #795E26">greaterThan</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;1.2.3&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000">); </span><span style="color: #008000">// false</span>
+</code></pre>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<ul>
+					<li>npm:</li>
+				</ul>
+				<pre><code class="language-bash"><span style="color: #000000">npm install --save @obsidize/semver</span>
+</code></pre>
+				<ul>
+					<li>git:</li>
+				</ul>
+				<pre><code class="language-bash"><span style="color: #000000">npm install --save git+https://github.com/jospete/obsidize-semver.git</span>
+</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h3>Example</h3>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> {</span><span style="color: #001080">Semver</span><span style="color: #000000">, </span><span style="color: #001080">SemverComparator</span><span style="color: #000000">, </span><span style="color: #001080">SemverContext</span><span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@obsidize/semver&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">// Use the static comparator for one-off comparisons</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">Semver</span><span style="color: #000000">.</span><span style="color: #795E26">greaterThan</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;1.2.3&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;1&#039;</span><span style="color: #000000">)); </span><span style="color: #008000">// true</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">Semver</span><span style="color: #000000">.</span><span style="color: #795E26">greaterThan</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;1.2.3&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">null</span><span style="color: #000000">)); </span><span style="color: #008000">// false</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">Semver</span><span style="color: #000000">.</span><span style="color: #795E26">equals</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;1.2.3&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">null</span><span style="color: #000000">, </span><span style="color: #0000FF">true</span><span style="color: #000000">)); </span><span style="color: #008000">// true (because 3rd parameter &#039;defaultValue&#039; is true)</span>
+
+<span style="color: #008000">// Or create a version context for multiple checks against a target version</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">version</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">SemverContext</span><span style="color: #000000">(() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;1.2.3&#039;</span><span style="color: #000000">); </span><span style="color: #008000">// or load this dynamically from somewhere else</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">version</span><span style="color: #000000">.</span><span style="color: #795E26">lessThan</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;2&#039;</span><span style="color: #000000">)); </span><span style="color: #008000">// true</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">version</span><span style="color: #000000">.</span><span style="color: #795E26">equals</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;1.2.3&#039;</span><span style="color: #000000">)); </span><span style="color: #008000">// true</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">version</span><span style="color: #000000">.</span><span style="color: #795E26">greaterThanOrEqualTo</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;1.2.3&#039;</span><span style="color: #000000">)); </span><span style="color: #008000">// true</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">version</span><span style="color: #000000">.</span><span style="color: #795E26">greaterThan</span><span style="color: #000000">(</span><span style="color: #0000FF">null</span><span style="color: #000000">)); </span><span style="color: #008000">// false</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">version</span><span style="color: #000000">.</span><span style="color: #795E26">greaterThan</span><span style="color: #000000">(</span><span style="color: #0000FF">null</span><span style="color: #000000">, </span><span style="color: #0000FF">true</span><span style="color: #000000">)); </span><span style="color: #008000">// true</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">version</span><span style="color: #000000">.</span><span style="color: #795E26">greaterThan</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;2&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">true</span><span style="color: #000000">)); </span><span style="color: #008000">// false</span>
+
+<span style="color: #008000">// Don&#039;t like &#039;compare-versions&#039; as the backend?</span>
+<span style="color: #008000">// Make your own!</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">customComparator</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">SemverComparator</span><span style="color: #000000">((</span><span style="color: #001080">a</span><span style="color: #000000">, </span><span style="color: #001080">b</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000">  </span><span style="color: #008000">/* fancy compare function here */</span><span style="color: #000000">);</span>
+</code></pre>
+				<p>See the <a href="https://github.com/jospete/obsidize-semver/blob/master/tests/example-usage.spec.ts">Example Usage Spec</a> to get a general feel for what this module can do.</p>
+				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
+					<h2>API</h2>
+				</a>
+				<p>Source documentation can be found <a href="https://jospete.github.io/obsidize-semver/">here</a></p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/SemverUtility.html">Semver<wbr>Utility</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/SemverComparisonType.html" class="tsd-kind-icon">Semver<wbr>Comparison<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/SemverComparator.html" class="tsd-kind-icon">Semver<wbr>Comparator</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/SemverContext.html" class="tsd-kind-icon">Semver<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#EqualityDelegate" class="tsd-kind-icon">Equality<wbr>Delegate</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#SemverComparisonDelegate" class="tsd-kind-icon">Semver<wbr>Comparison<wbr>Delegate</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#SemverComparisonResult" class="tsd-kind-icon">Semver<wbr>Comparison<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#Semver" class="tsd-kind-icon">Semver</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

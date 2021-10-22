@@ -100,7 +100,7 @@ export class SemverComparator {
 	 * Returns the comparison result between the two given versions, where:
 	 * * -1 indicates v1 < v2
 	 * * 0 indicates v1 <= v2 | v1 = v2 | v1 >= v2
-	 * *1 indicates v1 > v2
+	 * * 1 indicates v1 > v2
 	 * 
 	 * Returns defaultValue on comparison failure.
 	 */

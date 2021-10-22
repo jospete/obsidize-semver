@@ -124,6 +124,6 @@ export class SemverComparator {
 		return SemverUtility.bombShield(() => {
 			const equalityTest = SemverUtility.getEqualityDelegateByType(type);
 			return equalityTest(compareResult, 0);
-		}, defaultValue)
+		}, defaultValue);
 	}
 }

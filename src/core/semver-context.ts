@@ -26,27 +26,62 @@ export class SemverContext {
 		return SemverUtility.bombShield(this.onGetVersion, '');
 	}
 
-	compare(other: string, defaultValue?: number): number {
+	public compare(other: string, defaultValue?: number): number {
 		return this.comparator.compare(this.version, other, defaultValue);
 	}
 
-	lessThan(other: string, defaultValue?: boolean): boolean {
+	public lessThan(other: string, defaultValue?: boolean): boolean {
 		return this.comparator.lessThan(this.version, other, defaultValue);
 	}
 
-	lessThanOrEqualTo(other: string, defaultValue?: boolean): boolean {
+	public lessThanOrEqualTo(other: string, defaultValue?: boolean): boolean {
 		return this.comparator.lessThanOrEqualTo(this.version, other, defaultValue);
 	}
 
-	equals(other: string, defaultValue?: boolean): boolean {
+	public equals(other: string, defaultValue?: boolean): boolean {
 		return this.comparator.equals(this.version, other, defaultValue);
 	}
 
-	greaterThanOrEqualTo(other: string, defaultValue?: boolean): boolean {
+	public greaterThanOrEqualTo(other: string, defaultValue?: boolean): boolean {
 		return this.comparator.greaterThanOrEqualTo(this.version, other, defaultValue);
 	}
 
-	greaterThan(other: string, defaultValue?: boolean): boolean {
+	public greaterThan(other: string, defaultValue?: boolean): boolean {
 		return this.comparator.greaterThan(this.version, other, defaultValue);
+	}
+
+	/**
+	 * lessThan() alias
+	 */
+	public lt(other: string, defaultValue?: boolean): boolean {
+		return this.lessThan(other, defaultValue);
+	}
+
+	/**
+	 * lessThanOrEqualTo() alias
+	 */
+	public lte(other: string, defaultValue?: boolean): boolean {
+		return this.lessThanOrEqualTo(other, defaultValue);
+	}
+
+	/**
+	 * equals() alias
+	 */
+	public eq(other: string, defaultValue?: boolean): boolean {
+		return this.equals(other, defaultValue);
+	}
+
+	/**
+	 * greaterThanOrEqualTo() alias
+	 */
+	public gte(other: string, defaultValue?: boolean): boolean {
+		return this.greaterThanOrEqualTo(other, defaultValue);
+	}
+
+	/**
+	 * greaterThan() alias
+	 */
+	public gt(other: string, defaultValue?: boolean): boolean {
+		return this.greaterThan(other, defaultValue);
 	}
 }

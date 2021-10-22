@@ -21,16 +21,16 @@ describe('General Usage', () => {
 
 	it('can run the readme example', () => {
 
-		expect(Semver.greaterThan('1.2.3', '1')).toBe(true);
-		expect(Semver.greaterThan('1.2.3', null)).toBe(false);
-		expect(Semver.equals('1.2.3', null, true)).toBe(true);
+		expect(Semver.gt('1.2.3', '1')).toBe(true);
+		expect(Semver.gt('1.2.3', null)).toBe(false);
+		expect(Semver.eq('1.2.3', null, true)).toBe(true);
 
 		const version = new SemverContext(() => '1.2.3');
-		expect(version.lessThan('2')).toBe(true);
-		expect(version.equals('1.2.3')).toBe(true);
-		expect(version.greaterThanOrEqualTo('1.2.3')).toBe(true);
-		expect(version.greaterThan(null)).toBe(false);
-		expect(version.greaterThan(null, true)).toBe(true);
-		expect(version.greaterThan('2', true)).toBe(false);
+		expect(version.lt('2')).toBe(true);
+		expect(version.eq('1.2.3')).toBe(true);
+		expect(version.gte('1.2.3')).toBe(true);
+		expect(version.gt(null)).toBe(false);
+		expect(version.gt(null, true)).toBe(true);
+		expect(version.gt('2', true)).toBe(false);
 	});
 });

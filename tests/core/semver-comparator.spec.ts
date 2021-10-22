@@ -51,4 +51,15 @@ describe('SemverComparator', () => {
 			expect(Semver.equals('1.0.0', '1.0.0.1')).toBe(false);
 		});
 	});
+
+	describe('alias methods', () => {
+
+		it('is shortcuts for the extended method names', () => {
+			expect(Semver.equals('1.2.3', '1')).toEqual(Semver.eq('1.2.3', '1'));
+			expect(Semver.greaterThan('1.2.3', '1')).toEqual(Semver.gt('1.2.3', '1'));
+			expect(Semver.lessThan('1.2.3', '1')).toEqual(Semver.lt('1.2.3', '1'));
+			expect(Semver.greaterThanOrEqualTo('1.2.3', '1')).toEqual(Semver.gte('1.2.3', '1'));
+			expect(Semver.lessThanOrEqualTo('1.2.3', '1')).toEqual(Semver.lte('1.2.3', '1'));
+		});
+	});
 });

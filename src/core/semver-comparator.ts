@@ -62,6 +62,41 @@ export class SemverComparator {
 	}
 
 	/**
+	 * lessThan() alias
+	 */
+	public lt(v1: string, v2: string, defaultValue?: boolean): boolean {
+		return this.lessThan(v1, v2, defaultValue);
+	}
+
+	/**
+	 * lessThanOrEqualTo() alias
+	 */
+	public lte(v1: string, v2: string, defaultValue?: boolean): boolean {
+		return this.lessThanOrEqualTo(v1, v2, defaultValue);
+	}
+
+	/**
+	 * equals() alias
+	 */
+	public eq(v1: string, v2: string, defaultValue?: boolean): boolean {
+		return this.equals(v1, v2, defaultValue);
+	}
+
+	/**
+	 * greaterThanOrEqualTo() alias
+	 */
+	public gte(v1: string, v2: string, defaultValue?: boolean): boolean {
+		return this.greaterThanOrEqualTo(v1, v2, defaultValue);
+	}
+
+	/**
+	 * greaterThan() alias
+	 */
+	public gt(v1: string, v2: string, defaultValue?: boolean): boolean {
+		return this.greaterThan(v1, v2, defaultValue);
+	}
+
+	/**
 	 * Returns the comparison result between the two given versions, where:
 	 * * -1 indicates v1 < v2
 	 * * 0 indicates v1 <= v2 | v1 = v2 | v1 >= v2
@@ -81,10 +116,14 @@ export class SemverComparator {
 
 		const resultDefault = this.compareFailureResult;
 		const compareResult = this.compare(v1, v2, resultDefault);
-		const equalityTest = SemverUtility.getEqualityDelegateByType(type);
 
-		return (compareResult !== resultDefault)
-			? SemverUtility.bombShield(() => equalityTest(compareResult, 0), defaultValue)
-			: defaultValue;
+		if (compareResult === resultDefault) {
+			return defaultValue;
+		}
+
+		return SemverUtility.bombShield(() => {
+			const equalityTest = SemverUtility.getEqualityDelegateByType(type);
+			return equalityTest(compareResult, 0);
+		}, defaultValue)
 	}
 }

@@ -27,4 +27,16 @@ describe('SemverContext', () => {
 			expect(context.lessThanOrEqualTo(null, true)).toBe(true);
 		});
 	});
+
+	describe('alias methods', () => {
+
+		it('is shortcuts for the extended method names', () => {
+			const context = new SemverContext(() => '1.2.3');
+			expect(context.equals('1')).toEqual(context.eq('1'));
+			expect(context.greaterThan('1')).toEqual(context.gt('1'));
+			expect(context.lessThan('1')).toEqual(context.lt('1'));
+			expect(context.greaterThanOrEqualTo('1')).toEqual(context.gte('1'));
+			expect(context.lessThanOrEqualTo('1')).toEqual(context.lte('1'));
+		});
+	});
 });
